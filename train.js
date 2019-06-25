@@ -28,6 +28,11 @@ let firebaseConfig = {
 
     trainInfo.ref().push(newTrain);
 
+    console.log(newTrain.name);
+    console.log(newTrain.destination);
+    console.log(newTrain.firstTrain);
+    console.log(newTrain.frequency);
+
     $("#name-input").val("");
     $("#destination-input").val("");
     $("#train-input").val("");
@@ -58,6 +63,9 @@ trainInfo.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
         timeArrival = moment().add(timeMinutes, "m").format("hh:mm A");
     }
+
+    console.log("timeMinutes:", timeMinutes);
+    console.log("timeArrival:", timeArrival);
 
     $("#train-table > tbody").append (
         $("<tr>").append(
