@@ -33,3 +33,39 @@ let firebaseConfig = {
     $("#train-input").val("");
     $("#frequency-input").val("");
   });
+
+trainInfo.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+    let time = childSnapshot.val().name;
+    let timeDestination = childSnapshot.val().destination;
+    let timeFrequency = childSnapshot.val().frequency;
+    let timeFirstTrain = child.Snapshot.val().firstTrain;
+
+    let timeA = tFirstTrain.split(":");
+    let trainTime = moment().hours(timeA[0]).minutes(timeA[1]);
+    let maxMoment = moment.max(moment(), trainTime);
+    let timeMinutes;
+    let timeArrival;
+
+    if (maxMoment === trainTime) {
+        timeArrival = trainTime.format("hh:mm A");
+        timeMinutes = trainTime.diff(moment(), "minutes");
+    }
+    else {
+        let difference = moment().diff(trainTime, "minutes");
+        let remainder = difference % timeFrequency;
+        timeMinutes = timeFrequency - remainder; 
+
+        timeArrival = moment().add(timeMinutes, "m").format("hh:mm A");
+    }
+
+    $("#train-table > tbody").append (
+        $("<tr>").append(
+            $("<td>").text(time),
+            $("<td>").text(timeDestination),
+            $("<td>").text(timeFrequency), 
+            $("<td>").text(timeArrival),
+            $("<td>").text(timeMinutes)
+        )
+    );
+});
