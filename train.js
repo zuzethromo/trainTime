@@ -1,11 +1,11 @@
 let firebaseConfig = {
-    apiKey: "AIzaSyCV4KRghjgNWW26puxtV2s3dNAYunIP0S4",
-    authDomain: "traintime-1f645.firebaseapp.com",
-    databaseURL: "https://traintime-1f645.firebaseio.com",
-    projectId: "traintime-1f645",
+    apiKey: "AIzaSyD2-NnilqncBz9Q-DCD9GYhkN-cf96Lfoc",
+    authDomain: "train7second.firebaseapp.com",
+    databaseURL: "https://train7second.firebaseio.com",
+    projectId: "train7second",
     storageBucket: "",
-    messagingSenderId: "662521316767",
-    appId: "1:662521316767:web:add91cf66bbbb72c"
+    messagingSenderId: "86426503945",
+    appId: "1:86426503945:web:513ab02e714c6f35"
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -44,7 +44,7 @@ trainInfo.ref().on("child_added", function(childSnapshot, prevChildKey) {
     let time = childSnapshot.val().name;
     let timeDestination = childSnapshot.val().destination;
     let timeFrequency = childSnapshot.val().frequency;
-    let timeFirstTrain = child.Snapshot.val().firstTrain;
+    let tFirstTrain = childSnapshot.val().firstTrain;
 
     let timeA = tFirstTrain.split(":");
     let trainTime = moment().hours(timeA[0]).minutes(timeA[1]);

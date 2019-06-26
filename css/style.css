@@ -1,0 +1,14 @@
+body {
+    background-image: url("../image/fishnets-and-hearts.png");
+}
+.jumbotron {
+    background-color: pink;
+    color: white;
+}
+
+.title {
+    text-align: center;
+}
+.subHeader {
+    text-align: center;
+}
